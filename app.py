@@ -16,7 +16,7 @@ os.environ["OPENAI_API_KEY"] =
 
 # Step 1: Convert PDF to text
 import textract
-doc = textract.process("/content/Sheffalee_resume_final.pdf")
+doc = textract.process("https://github.com/sheffalee/Chatbot_Using_LangChain/blob/main/Academic-Regulations.pdf")
 
 # Step 2: Save to .txt and reopen (helps prevent issues)
 with open('attention_is_all_you_need.txt', 'w') as f:
