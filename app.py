@@ -21,10 +21,6 @@ headers={
 # Set your OpenAI API key
 openai.api_key = st.secrets["API_KEY"]
 
-
-
-# os.environ["OPENAI_API_KEY"] = "api_key"
-
 # Define Streamlit app title
 st.title("Transformers Chatbot")
 
