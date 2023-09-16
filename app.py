@@ -10,16 +10,18 @@ from langchain.llms import OpenAI
 from langchain.chains import ConversationalRetrievalChain
 import textract
 import pandas as pd
-
-# Set your OpenAI API key
+import openai
+import streamlit as st
 
 headers={
     "authorization":st.secrets["API_KEY"],
     "content-type":"application/json"
 }
 
-#Set the openai api key
+# Set your OpenAI API key
 openai.api_key = st.secrets["API_KEY"]
+
+
 
 # os.environ["OPENAI_API_KEY"] = "api_key"
 
