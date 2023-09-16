@@ -8,3 +8,4 @@ textract
 transformers
 openai
 faiss-cpu
+streamlit
