@@ -61,6 +61,18 @@ embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 db = FAISS.from_documents(chunks, embeddings)
 
 # Create conversation chain that uses our vectordb as a retriever, this also allows for chat history management
+
+qa = ConversationalRetrievalChain.from_llm(
+    llm={
+        "llm_type": "transformers",
+        "model_name": "gpt2",  # You can use other pretrained models like "gpt2" or "gpt2-medium"
+        "api_key": api_key,    # Your OpenAI API key
+        "temperature": 0.1,   # Set your desired temperature
+        # Add other relevant parameters for the language model if needed
+    },
+    retriever=db.as_retriever()
+)
+
 # qa = ConversationalRetrievalChain.from_llm(
 #     llm={
 #         "llm_type": "openai",
@@ -71,15 +83,15 @@ db = FAISS.from_documents(chunks, embeddings)
 #     retriever=db.as_retriever()
 # )
 
-qa = ConversationalRetrievalChain.from_llm(
-    llm={
-        "llm_type": "openai",
-        "api_key": api_key,  # Your OpenAI API key
-        "temperature": 0.1,  # Set your desired temperature
-        # Add other relevant parameters for the language model if needed
-    },
-    retriever=db.as_retriever()
-)
+# qa = ConversationalRetrievalChain.from_llm(
+#     llm={
+#         "llm_type": "openai",
+#         "api_key": api_key,  # Your OpenAI API key
+#         "temperature": 0.1,  # Set your desired temperature
+#         # Add other relevant parameters for the language model if needed
+#     },
+#     retriever=db.as_retriever()
+# )
 chat_history = []
 
 # Streamlit UI elements
