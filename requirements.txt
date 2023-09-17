@@ -1,3 +1,7 @@
+# Python 2
+python==2.7
+
+# Python 3
 pip==23.2.1
 langchain==0.0.150
 pypdf
