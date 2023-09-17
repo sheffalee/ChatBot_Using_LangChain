@@ -14,7 +14,7 @@ import openai
 import streamlit as st
 import PyPDF2
 from pdfminer.high_level import extract_text
-from chatbot_using_langchain.utils import OpenAIEmbeddings
+# from chatbot_using_langchain.utils import OpenAIEmbeddings
 
 
 headers={
