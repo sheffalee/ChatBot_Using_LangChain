@@ -4,8 +4,22 @@ from transformers import GPT2TokenizerFast, pipeline
 # Define Streamlit app title
 st.title("Transformers Chatbot")
 
-# Retrieve the API key from Streamlit secrets
-api_key = st.secrets["API_KEY"]
+
+headers={
+    "authorization":st.secrets["API_KEY"],
+    "content-type":"application/json"
+}
+
+#Set the openai api key
+openai.api_key = st.secrets["API_KEY"]
+
+#  # Use the API key in the headers for API requests
+# headers = {
+#     "authorization": api_key,
+#     "content-type": "application/json"
+# }
+# # Retrieve the API key from Streamlit secrets
+# api_key = st.secrets["API_KEY"]
 
 # Step 1: Extract text from PDF using PyPDF2 PdfReader (You should implement this function)
 def extract_text_with_pypdf2(pdf_file):
