@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
-import streamlit.secrets as secrets
+# import streamlit.secrets as secrets
 import PyPDF2
 from pdfminer.high_level import extract_text
 import openai
@@ -13,7 +13,7 @@ import openai
 st.title("Transformers Chatbot")
 
 # Retrieve the API key from Streamlit secrets
-api_key = secrets["API_KEY"]
+api_key = st.secrets["API_KEY"]
 
 # Use the API key in the headers for API requests
 headers = {
