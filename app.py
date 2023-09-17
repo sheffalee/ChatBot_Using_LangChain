@@ -65,7 +65,7 @@ embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 db = FAISS.from_documents(chunks, embeddings)
 
 # Create conversation chain that uses our vectordb as a retriever, this also allows for chat history management
-qa = ConversationalRetrievalChain.from_llm(OpenAI(temperature=0.1, api_key=open_api_key), db.as_retriever())
+qa = ConversationalRetrievalChain.from_llm(OpenAI(temperature=0.1, api_key=openai_api_key), db.as_retriever())
 
 chat_history = []
 
