@@ -37,7 +37,7 @@ def extract_text_with_pypdf2(pdf_file):
             pdf_text += page.extractText()
     return pdf_text
 
-pdf_text = extract_text_with_pypdf2("/content/Sheffalee_resume_final.pdf")
+pdf_text = extract_text_with_pypdf2("Sheffalee_resume_final.pdf")
 
 # Step 2: Save to .txt and reopen (helps prevent issues)
 with open('attention_is_all_you_need.txt', 'w', encoding='utf-8') as f:
