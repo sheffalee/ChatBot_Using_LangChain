@@ -12,6 +12,9 @@ import textract
 import pandas as pd
 import openai
 import streamlit as st
+import PyPDF2
+from pdfminer.high_level import extract_text
+
 
 headers={
     "authorization":st.secrets["API_KEY"],
@@ -24,17 +27,16 @@ openai.api_key = st.secrets["API_KEY"]
 # Define Streamlit app title
 st.title("Transformers Chatbot")
 
-import PyPDF2
-from pdfminer.high_level import extract_text
 
-# Step 1: Extract text from PDF using PyPDF2
+
+# Step 1: Extract text from PDF using PyPDF2 PdfReader
 def extract_text_with_pypdf2(pdf_file):
     pdf_text = ''
-    with open(pdf_file, 'rb') as file:
-        pdf_reader = PyPDF2.PdfFileReader(file)
-        for page_num in range(pdf_reader.numPages):
-            page = pdf_reader.getPage(page_num)
-            pdf_text += page.extractText()
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
+    
+    for page in pdf_reader.pages:
+        pdf_text += page.extract_text()
+    
     return pdf_text
 
 pdf_text = extract_text_with_pypdf2("Sheffalee_resume_final.pdf")
@@ -54,13 +56,14 @@ def count_tokens(text: str) -> int:
 
 # Step 4: Split text into chunks
 text_splitter = RecursiveCharacterTextSplitter(
-    # Set a chunk size as needed.
-    chunk_size=512,
-    chunk_overlap=24,
-    length_function=count_tokens,
+   # Set a chunk size as needed.
+   chunk_size=512,
+   chunk_overlap=24,
+   length_function=count_tokens,
 )
 
 chunks = text_splitter.create_documents([text])
+
 
 # Advanced method - Split by chunk
 
