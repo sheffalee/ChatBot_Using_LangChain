@@ -1,4 +1,5 @@
-python==2.7
+PyPDF2 
+pdfminer.six 
 pip==23.2.1
 langchain==0.0.150
 pypdf
