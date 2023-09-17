@@ -4,4 +4,5 @@ transformers
 PyPDF2
 torch 
 tqdm
+openai
 
