@@ -14,6 +14,7 @@ import openai
 import streamlit as st
 import PyPDF2
 from pdfminer.high_level import extract_text
+from chatbot_using_langchain.utils import OpenAIEmbeddings
 
 
 headers={
@@ -64,7 +65,12 @@ chunks = text_splitter.create_documents([text])
 
 
 # Get embedding model
-embeddings = OpenAIEmbeddings()
+
+openai_api_key = openai.api_key  # Replace with your actual OpenAI API key
+
+embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+
+# embeddings = OpenAIEmbeddings()
 
 # Create vector database
 db = FAISS.from_documents(chunks, embeddings)
