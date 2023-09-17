@@ -30,10 +30,10 @@ def extract_text_with_pypdf2(pdf_file):
 
 # Step 2: Save to .txt and reopen (helps prevent issues)
 pdf_text = extract_text_with_pypdf2("Sheffalee_resume_final.pdf")
-with open('attention_is_all_you_need.txt', 'w', encoding='utf-8') as f:
+with open('sheffalee.txt', 'w', encoding='utf-8') as f:
     f.write(pdf_text)
 
-with open('attention_is_all_you_need.txt', 'r', encoding='utf-8') as f:
+with open('sheffalee.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
 # Step 3: Create GPT-2 pipeline for text generation
