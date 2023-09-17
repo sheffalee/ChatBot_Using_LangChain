@@ -57,9 +57,9 @@ text_splitter = RecursiveCharacterTextSplitter(
 chunks = text_splitter.create_documents([text])
 
 # Get embedding model
-openai.api_key = api_key  # Set the API key for OpenAI
+# openai.api_key = api_key  # Set the API key for OpenAI
 
-embeddings = OpenAIEmbeddings()
+embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
 # Create vector database
 db = FAISS.from_documents(chunks, embeddings)
