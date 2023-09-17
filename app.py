@@ -27,8 +27,6 @@ openai.api_key = st.secrets["API_KEY"]
 # Define Streamlit app title
 st.title("Transformers Chatbot")
 
-
-
 # Step 1: Extract text from PDF using PyPDF2 PdfReader
 def extract_text_with_pypdf2(pdf_file):
     pdf_text = ''
@@ -64,35 +62,6 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 chunks = text_splitter.create_documents([text])
 
-
-# Advanced method - Split by chunk
-
-# # Step 1: Convert PDF to text
-# doc = textract.process("Sheffalee_resume_final.pdf")
-
-# # Step 2: Save to .txt and reopen (helps prevent issues)
-# with open('attention_is_all_you_need.txt', 'w') as f:
-#     f.write(doc.decode('utf-8'))
-
-# with open('attention_is_all_you_need.txt', 'r') as f:
-#     text = f.read()
-
-# # Step 3: Create function to count tokens
-# tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
-
-# def count_tokens(text: str) -> int:
-#     return len(tokenizer.encode(text))
-
-# # Step 4: Split text into chunks
-# text_splitter = RecursiveCharacterTextSplitter(
-#     # Set a chunk size, adjust as needed.
-#     chunk_size=512,
-#     chunk_overlap=24,
-#     length_function=count_tokens,
-# )
-
-# chunks = text_splitter.create_documents([text])
-# Result is many LangChain 'Documents' around 500 tokens or less (Recursive splitter sometimes allows more tokens to retain context)
 
 # Get embedding model
 embeddings = OpenAIEmbeddings()
