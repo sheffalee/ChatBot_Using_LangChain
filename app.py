@@ -8,6 +8,11 @@ st.title("Transformers Chatbot")
 # Retrieve the API key from Streamlit secrets
 api_key = st.secrets["API_KEY"]
 
+# Use the API key in the headers for API requests
+headers = {
+    "authorization": api_key,
+    "content-type": "application/json"
+}
 # Step 1: Extract text from PDF using PyPDF2 PdfReader
 def extract_text_with_pypdf2(pdf_file):
     pdf_text = ''
