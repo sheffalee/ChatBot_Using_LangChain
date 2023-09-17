@@ -1,5 +1,6 @@
 import streamlit as st
 from transformers import GPT2TokenizerFast, pipeline
+import openai
 
 # Define Streamlit app title
 st.title("Transformers Chatbot")
